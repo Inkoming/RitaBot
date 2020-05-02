@@ -9,7 +9,10 @@ module.exports = function(bot, status, config, channel, writable = true)
       "online": function()
       {
          bot.setPresence({
-            status: "online"
+            status: "online",
+//            game: {
+//               name: config.translateCmdShort + " help / " + config.translateCmd +" help - V." + config.version
+//            }
          });
       },
 
@@ -29,4 +32,8 @@ module.exports = function(bot, status, config, channel, writable = true)
    };
 
    //if (status && statusMap.hasOwnProperty(status) && writable)
+   if (Object.prototype.hasOwnProperty.call(status && statusMap,status) && writable)
+   {
+      return statusMap[status]();
+   }
 };
