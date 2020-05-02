@@ -9,7 +9,10 @@ module.exports = function(bot, status, config, channel, writable = true)
       "online": function()
       {
          bot.setPresence({
-            status: "online"
+            status: "online",
+            game: {
+               name: config.translateCmdShort + " help / " + config.translateCmd +" help - V." + config.version
+            }
          });
       },
 
